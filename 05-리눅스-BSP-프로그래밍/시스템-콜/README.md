@@ -27,11 +27,11 @@
     `include/uapi/asm-generic/unistd.h` 파일 수정
     
     ```c
-    // 추가
+    // 451번 자리 변경
     #define __NR_mysyscall 451
     __SYSCALL(__NR_mysyscall, sys_mysyscall)
     
-    // 한 칸 다음으로 번호 변경
+    // 기존 451번은 한 칸 다음으로 번호 변경
     #undef __NR_syscalls
     #define __NR_syscalls 452
     ```
@@ -56,6 +56,8 @@
 4. System call 함수 구현
     
     `kernel/test_mysyscall.c` 파일 생성
+    
+    [test_mysyscall.c](file/test_mysyscall.c)
     
     ```c
     #include <linux/kernel.h>
@@ -82,7 +84,11 @@
 
 컴파일 한 커널 이미지와 `include/asm-generic/unistd.h` 파일을 라즈베리 파이로 옮긴다.
 
-그 후, 다음 시스템 콜을 호출하는 프로그램을 작성하여 실행해본다.
+그 후, 다음 시스템 콜을 호출하는 프로그램을 작성하고, 빌드하여 실행해본다.
+
+`syscall_app.c` 파일 생성
+
+[syscall_app.c](files/syscall_app.c)
 
 ```c
 #include <stdio.h>
@@ -133,3 +139,25 @@ int gpio_to_irq(unsigned int gpio);
 // GPIO에 interrupt 기능을 해제.
 void free_irq(unsigned int irq, void *dev_id);
 ```
+
+### LED 제어 프로그램
+
+시스템 콜을 호출하여 라즈베리 파이에 연결된 버튼과 LED를 제어하는 프로그램이다.
+
+LED는 GPIO 6~13번, 버튼은 GPIO 16~23번 핀에 연결하였다.
+
+1. System call 함수
+    
+    `kernel/test_mysyscall_button.c` 파일 생성
+    
+    [test_mysyscall_button.c](files/test_mysyscall_button.c)
+    
+    `kernel/Makefile` 파일을 수정한 후, 커널을 다시 빌드한다.
+    
+2. System call 호출 프로그램
+    
+    `syscall_app_button.c` 파일 생성
+    
+    [syscall_app_button.c](files/syscall_app_button.c)
+    
+    작성한 프로그램을 라즈베리 파이에서 실행 가능하게 빌드한다.
