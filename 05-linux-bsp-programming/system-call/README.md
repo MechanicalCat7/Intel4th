@@ -144,7 +144,7 @@ void free_irq(unsigned int irq, void *dev_id);
 
 시스템 콜을 호출하여 라즈베리 파이에 연결된 버튼과 LED를 제어하는 프로그램이다.
 
-LED는 GPIO 6~13번, 버튼은 GPIO 16~23번 핀에 연결하였다.
+LED는 GPIO 6&#126;13번, 버튼은 GPIO 16&#126;23번 핀에 연결하였다.
 
 1. System call 함수
     
