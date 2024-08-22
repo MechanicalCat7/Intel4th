@@ -57,7 +57,7 @@
     
     `kernel/test_mysyscall.c` 파일 생성
     
-    [test_mysyscall.c](file/test_mysyscall.c)
+    [test_mysyscall.c](files/test_mysyscall.c)
     
     ```c
     #include <linux/kernel.h>
@@ -161,3 +161,7 @@ LED는 GPIO 6&#126;13번, 버튼은 GPIO 16&#126;23번 핀에 연결하였다.
     [syscall_app_button.c](files/syscall_app_button.c)
     
     작성한 프로그램을 라즈베리 파이에서 실행 가능하게 빌드한다.
+
+3. 실행 결과
+
+    ![video_gpio](images/video_gpio.gif)
