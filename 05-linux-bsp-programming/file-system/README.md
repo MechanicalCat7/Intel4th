@@ -141,6 +141,8 @@ meta-*               // 레이어
     
     다음은 `rpilinux-image.bb` 예시 파일이다:
     
+    [rpilinux-image.bb](files/rpilinux-image.bb)
+
     ```
     require recipes-core/images/core-image-minimal-dev.bb 
     
