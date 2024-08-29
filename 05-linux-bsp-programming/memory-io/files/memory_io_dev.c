@@ -7,6 +7,7 @@
 #include <linux/types.h>
 #include <linux/fcntl.h>
 #include <linux/gpio.h>
+#include <asm/uaccess.h>
 
 
 #define CALL_DEV_NAME	"calldev"
